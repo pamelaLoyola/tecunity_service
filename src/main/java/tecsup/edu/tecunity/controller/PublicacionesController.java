@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import tecsup.edu.tecunity.model.Horarios;
 import tecsup.edu.tecunity.model.Publicaciones;
-import tecsup.edu.tecunity.service.IHorariosService;
 import tecsup.edu.tecunity.service.IPublicacionesService;
 
 @CrossOrigin(origins = {"*"}, methods = {RequestMethod.GET, RequestMethod.POST,
@@ -33,35 +31,35 @@ public class PublicacionesController {
 	@Qualifier(value = "publicacionesService")
 	private IPublicacionesService iPublicacionesService;
 	
-	@GetMapping(value ="/horarios/")
+	@GetMapping(value ="/publicaciones/")
 	List<Publicaciones> showAll(){
 		return this.iPublicacionesService.findAll();
 	}
 	
-	@GetMapping(value = "/horario/${id}")
+	@GetMapping(value = "/publicacion/${id}")
 	Publicaciones showIndividual(@PathVariable(value = "id") Integer id) {
 		return this.iPublicacionesService.findById(id);
 	}
 	
-	@PostMapping(value = "/horario")
+	@PostMapping(value = "/publicacion")
 	@ResponseStatus(HttpStatus.CREATED)
-	Publicaciones create(@RequestBody Publicaciones horario) {
-		this.iPublicacionesService.save(horario);
-		return horario;
+	Publicaciones create(@RequestBody Publicaciones publicacion) {
+		this.iPublicacionesService.save(publicacion);
+		return publicacion;
 	}
 	
-	@PutMapping(value = "/horario/${id}")
+	@PutMapping(value = "/publicacion/${id}")
 	Publicaciones update (@RequestBody Publicaciones horario, @PathVariable(value = "id") Integer id) {
-		Publicaciones currentHorario = this.iPublicacionesService.findById(id);
-		this.iPublicacionesService.save(currentHorario);
-		return currentHorario;
+		Publicaciones currentPublicacion = this.iPublicacionesService.findById(id);
+		this.iPublicacionesService.save(currentPublicacion);
+		return currentPublicacion;
 	}
 	
-	@DeleteMapping(value = "/horario/${id}")
+	@DeleteMapping(value = "/publicacion/${id}")
 	@ResponseStatus(HttpStatus.OK)
 	void Delete(@PathVariable(value = "id") Integer id) {
-		Publicaciones horario=this.iPublicacionesService
+		Publicaciones publicacion=this.iPublicacionesService
 				.findById(id);
-		this.iPublicacionesService.delete(horario);
+		this.iPublicacionesService.delete(publicacion);
 	}
 }
