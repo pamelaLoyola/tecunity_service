@@ -23,9 +23,8 @@ import tecsup.edu.tecunity.service.IHorariosService;
 @CrossOrigin(origins = {"*"}, methods = {RequestMethod.GET, RequestMethod.POST,
         RequestMethod.PUT, RequestMethod.DELETE})
 @RestController
-@RequestMapping(value = "{/api}")
+@RequestMapping(value = "/api")
 public class HorariosController {
-
 
 	@Autowired
 	@Qualifier(value = "horariosService")
@@ -36,7 +35,7 @@ public class HorariosController {
 		return this.iHorariosService.findAll();
 	}
 	
-	@GetMapping(value = "/horario/${id}")
+	@GetMapping(value = "/horario/{id}")
 	Horarios showIndividual(@PathVariable(value = "id") Integer id) {
 		return this.iHorariosService.findById(id);
 	}
@@ -48,14 +47,14 @@ public class HorariosController {
 		return horario;
 	}
 	
-	@PutMapping(value = "/horario/${id}")
+	@PutMapping(value = "/horario/{id}")
 	Horarios update (@RequestBody Horarios horario, @PathVariable(value = "id") Integer id) {
 		Horarios currentHorario = this.iHorariosService.findById(id);
 		this.iHorariosService.save(currentHorario);
 		return currentHorario;
 	}
 	
-	@DeleteMapping(value = "/horario/${id}")
+	@DeleteMapping(value = "/horario/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	void Delete(@PathVariable(value = "id") Integer id) {
 		Horarios horario=this.iHorariosService.findById(id);

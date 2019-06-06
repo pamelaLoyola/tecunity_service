@@ -2,6 +2,7 @@ package tecsup.edu.tecunity.model;
 
 import java.io.Serializable;
 import java.sql.Time;
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -14,11 +15,11 @@ public class Horarios implements Serializable {
 	@Column(name = "horario_id")
 	private Integer idHorarios;
 	
-	@Temporal(TemporalType.TIME)
+	//@Temporal(TemporalType.TIME)
 	@Column(name = "hora_inicio")
 	private Time horaInicio;
 	
-	@Temporal(TemporalType.TIME)
+	//@Temporal(TemporalType.DATE)
 	@Column(name = "hora_fin")
 	private Time horaFin;
 

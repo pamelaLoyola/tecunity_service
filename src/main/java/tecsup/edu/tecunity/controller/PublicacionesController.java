@@ -23,7 +23,7 @@ import tecsup.edu.tecunity.service.IPublicacionesService;
 @CrossOrigin(origins = {"*"}, methods = {RequestMethod.GET, RequestMethod.POST,
         RequestMethod.PUT, RequestMethod.DELETE})
 @RestController
-@RequestMapping(value = "{/api}")
+@RequestMapping(value = "/api")
 public class PublicacionesController {
 
 
@@ -36,7 +36,7 @@ public class PublicacionesController {
 		return this.iPublicacionesService.findAll();
 	}
 	
-	@GetMapping(value = "/publicacion/${id}")
+	@GetMapping(value = "/publicacion/{id}")
 	Publicaciones showIndividual(@PathVariable(value = "id") Integer id) {
 		return this.iPublicacionesService.findById(id);
 	}
@@ -48,14 +48,14 @@ public class PublicacionesController {
 		return publicacion;
 	}
 	
-	@PutMapping(value = "/publicacion/${id}")
+	@PutMapping(value = "/publicacion/{id}")
 	Publicaciones update (@RequestBody Publicaciones horario, @PathVariable(value = "id") Integer id) {
 		Publicaciones currentPublicacion = this.iPublicacionesService.findById(id);
 		this.iPublicacionesService.save(currentPublicacion);
 		return currentPublicacion;
 	}
 	
-	@DeleteMapping(value = "/publicacion/${id}")
+	@DeleteMapping(value = "/publicacion/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	void Delete(@PathVariable(value = "id") Integer id) {
 		Publicaciones publicacion=this.iPublicacionesService

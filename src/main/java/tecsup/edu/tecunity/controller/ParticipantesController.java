@@ -23,7 +23,7 @@ import tecsup.edu.tecunity.service.IParticipantesService;
 @CrossOrigin(origins = {"*"}, methods = {RequestMethod.GET, RequestMethod.POST,
         RequestMethod.PUT, RequestMethod.DELETE})
 @RestController
-@RequestMapping(value = "{/api}")
+@RequestMapping(value = "/api")
 public class ParticipantesController {
 	
 
@@ -31,31 +31,31 @@ public class ParticipantesController {
 	@Qualifier(value = "participantesService")
 	private IParticipantesService iParticipantesService;
 	
-	@GetMapping(value ="/horarios/")
+	@GetMapping(value ="/participantes/")
 	List<Participantes> showAll(){
 		return this.iParticipantesService.findAll();
 	}
 	
-	@GetMapping(value = "/horario/${id}")
+	@GetMapping(value = "/participante/{id}")
 	Participantes showIndividual(@PathVariable(value = "id") Integer id) {
 		return this.iParticipantesService.findById(id);
 	}
 	
-	@PostMapping(value = "/horario")
+	@PostMapping(value = "/participante")
 	@ResponseStatus(HttpStatus.CREATED)
 	Participantes create(@RequestBody Participantes participante) {
 		this.iParticipantesService.save(participante);
 		return participante;
 	}
 	
-	@PutMapping(value = "/horario/${id}")
+	@PutMapping(value = "/participante/{id}")
 	Participantes update (@RequestBody Participantes participante, @PathVariable(value = "id") Integer id) {
 		Participantes currentParticipante = this.iParticipantesService.findById(id);
 		this.iParticipantesService.save(currentParticipante);
 		return currentParticipante;
 	}
 	
-	@DeleteMapping(value = "/horario/${id}")
+	@DeleteMapping(value = "/participante/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	void Delete(@PathVariable(value = "id") Integer id) {
 		Participantes participante=this.iParticipantesService.findById(id);

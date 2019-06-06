@@ -23,7 +23,7 @@ import tecsup.edu.tecunity.service.ICursosService;;
 @CrossOrigin(origins = {"*"}, methods = {RequestMethod.GET, RequestMethod.POST,
         RequestMethod.PUT, RequestMethod.DELETE})
 @RestController
-@RequestMapping(value = "{/api}")
+@RequestMapping(value = "/api")
 public class CursosController {
 
 	@Autowired
@@ -35,7 +35,7 @@ public class CursosController {
 		return this.iCursosService.findAll();
 	}
 	
-	@GetMapping(value = "/curso/${id}")
+	@GetMapping(value = "/curso/{id}")
 	Cursos showIndividual(@PathVariable(value = "id") Integer id) {
 		return this.iCursosService.findById(id);
 	}
@@ -47,14 +47,14 @@ public class CursosController {
 		return curso;
 	}
 	
-	@PutMapping(value = "/curso/${id}")
+	@PutMapping(value = "/curso/{id}")
 	Cursos update (@RequestBody Cursos carreras, @PathVariable(value = "id") Integer id) {
 		Cursos currentCurso = this.iCursosService.findById(id);
 		this.iCursosService.save(currentCurso);
 		return currentCurso;
 	}
 	
-	@DeleteMapping(value = "/curso/${id}")
+	@DeleteMapping(value = "/curso/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	void Delete(@PathVariable(value = "id") Integer id) {
 		Cursos curso=this.iCursosService.findById(id);
