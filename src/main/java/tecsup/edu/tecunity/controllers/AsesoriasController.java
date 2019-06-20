@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import tecsup.edu.tecunity.models.Asesoria;
 import tecsup.edu.tecunity.services.IAsesoriasService;
-
+//prueba
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/api")
