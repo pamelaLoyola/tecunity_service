@@ -49,8 +49,10 @@ public class PublicacionesController {
 	}
 	
 	@PutMapping(value = "/publicacion/{id}")
-	Publicacion update (@RequestBody Publicacion horario, @PathVariable(value = "id") Integer id) {
+	Publicacion update (@RequestBody Publicacion publicacion, @PathVariable(value = "id") Integer id) {
 		Publicacion currentPublicacion = this.iPublicacionesService.findById(id);
+		currentPublicacion.setTipo(publicacion.getTipo());
+		currentPublicacion.setEstado(publicacion.getEstado());
 		this.iPublicacionesService.save(currentPublicacion);
 		return currentPublicacion;
 	}

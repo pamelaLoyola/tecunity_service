@@ -51,6 +51,7 @@ public class ParticipantesController {
 		Participante currentParticipante = iParticipantesService.findByEmail(correo);
 		currentParticipante.setUsuario(participante.getUsuario());
         currentParticipante.setCiclo(participante.getCiclo());
+        currentParticipante.setFoto(participante.getFoto());
         currentParticipante.setCelular(participante.getCelular());
         currentParticipante.setCarrera(participante.getCarrera());
         this.iParticipantesService.save(currentParticipante);
